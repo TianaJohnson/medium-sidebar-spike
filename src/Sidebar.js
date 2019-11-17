@@ -6,15 +6,85 @@ import ListItemText from '@material-ui/core/ListItemText'
 
 function Sidebar({items}) {
   return (
-      <div className="sidebar">
-    <List disablePadding dense>
-    {items.map(({ label, name, ...rest }) => (
-      <ListItem key={name} button {...rest}>
-        <ListItemText>{label}</ListItemText>
-      </ListItem>
-    ))}
-  </List>
-  </div>
+<div className="sidebar">
+      <List disablePadding dense>
+        {items.map(({ label, name, items: subItems, ...rest }) => {
+          return (
+            <React.Fragment key={name}>
+              <ListItem style={{ paddingLeft: 18 }} button {...rest}>
+                <ListItemText>{label}</ListItemText>
+              </ListItem>
+              {Array.isArray(subItems) ? (
+                <List disablePadding dense>
+                  {subItems.map((subItem) => {
+                    return (
+                      <ListItem
+                        key={subItem.name}
+                        style={{ paddingLeft: 36 }}
+                        button
+                        dense
+                      >
+                        <ListItemText>
+                          <span className="sidebar-subitem-text">
+                            {subItem.label}
+                          </span>
+                        </ListItemText>
+                      </ListItem>
+                    )
+                  })}
+                </List>
+              ) : null}
+            </React.Fragment>
+          )
+        })}
+      </List>
+    </div>
+
+    // 3rd
+    // <div className="sidebar">
+    //   <List disablePadding dense>
+    //     {items.map(({ label, name, items: subItems, ...rest }) => (
+    //       <React.Fragment key={name}>
+    //         <ListItem style={{ paddingLeft: 18 }} button {...rest}>
+    //           <ListItemText>{label}</ListItemText>
+    //         </ListItem>
+    //         {Array.isArray(subItems) ? (
+    //           <List disablePadding>
+    //             {subItems.map((subItem) => (
+    //               <ListItem key={subItem.name} button>
+    //                 <ListItemText className="sidebar-item-text">
+    //                   {subItem.label}
+    //                 </ListItemText>
+    //               </ListItem>
+    //             ))}
+    //           </List>
+    //         ) : null}
+    //       </React.Fragment>
+    //     ))}
+    //   </List>
+    // </div>
+
+//second itteration
+//     <div className="sidebar">
+//     <List disablePadding dense>
+//       {items.map(({ label, name, items: subItems, ...rest }) => (
+//         <ListItem style={{ paddingLeft: 18 }} key={name} button {...rest}>
+//           <ListItemText>{label}</ListItemText>
+//           {Array.isArray(subItems) ? (
+//             <List disablePadding>
+//               {subItems.map((subItem) => (
+//                 <ListItem key={subItem.name} button>
+//                   <ListItemText className="sidebar-item-text">
+//                     {subItem.label}
+//                   </ListItemText>
+//                 </ListItem>
+//               ))}
+//             </List>
+//           ) : null}
+//         </ListItem>
+//       ))}
+//     </List>
+//   </div>
   )
 }
 
