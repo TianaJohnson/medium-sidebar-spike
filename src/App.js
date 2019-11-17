@@ -1,6 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Sidebar from './Sidebar';
+
+const items = [
+  { name: 'home', label: 'Home' },
+  { name: 'billing', label: 'Billing' },
+  { name: 'settings', label: 'Settings' },
+]
+
+
+
 
 function App() {
   return (
@@ -10,6 +20,9 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+        <div>
+      <Sidebar items={items} />
+    </div>
         <a
           className="App-link"
           href="https://reactjs.org"
