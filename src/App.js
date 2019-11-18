@@ -6,6 +6,7 @@ import DesktopWindowsIcon from "@material-ui/icons/DesktopWindows";
 import SettingsIcon from "@material-ui/icons/Settings";
 import Sidebar from "./Sidebar";
 import ResponsiveSideBar from './ResponsiveSideBar/Responsive';
+import PersistentDrawer from './PersistentDrawer/PersistentDrawer';
 
 function onClick(e, item) {
   window.alert(JSON.stringify(item, null, 2));
@@ -56,8 +57,9 @@ const items = [
 function App() {
   return (
     <div>
-      <ResponsiveSideBar/>
-      <Sidebar items={items} />
+      <PersistentDrawer/>
+      {/* <ResponsiveSideBar/> */}
+      {/* <Sidebar items={items} /> */}
     </div>
   );
 }
